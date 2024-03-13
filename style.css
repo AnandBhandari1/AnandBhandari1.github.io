@@ -169,18 +169,23 @@ page[size="A4"] {
   flex-direction: column;
 }
 
-.skill {
-  display: inline-flex;
-  flex-direction: row;
+.skill,
+.platform {
+  /* display: inline-flex; */
+  /* flex-direction: row;
   justify-content: space-between;
   margin: 0.1cm;
   padding: 0.1cm;
-  border: 0.05cm solid #f0f0f0;
+  border: 0.05cm solid #e4e3e3;
   border-radius: 0.2cm;
-  /* background-color: #fbf7f7; */
+  background-color: #fbf7f7;
   font-weight: 600;
-  font-size: 0.3cm;
+  font-size: 0.3cm; */
 }
+/* .platform {
+  background-color: rgb(251, 251, 251);
+  border: 0.05cm solid #e4e3e3;
+} */
 
 .bottomLineSeparator {
   border-bottom: 0.05cm solid white;

@@ -9,10 +9,16 @@
     <div class="main">
       <div class="container">
         <div class="leftPanel">
-          <img src="logo.jpg" />
+          <img src="logo.png" />
           <div class="details">
             <div class="item bottomLineSeparator">
-              <h2>CONTACT</h2>
+              <div class="smallText">
+                <h2>Anand Bhandari</h2>
+                <p>AI & ML Enthusiast | Full Stack Developer | CTO</p>
+                <br />
+              </div>
+              <h2>Contact</h2>
+
               <div class="smallText">
                 <p>
                   <i class="fa fa-phone contactIcon" aria-hidden="true"></i>
@@ -33,9 +39,14 @@
               </div>
             </div>
             <div class="item bottomLineSeparator">
-              <h2>SKILLS</h2>
+              <h2>Skills</h2>
 
               <div id="skillsContainer"></div>
+            </div>
+            <div class="item bottomLineSeparator">
+              <h2>Platforms & APIs</h2>
+
+              <div id="platformsContainer"></div>
             </div>
             <div class="item bottomLineSeparator">
               <h2>Certifications</h2>
@@ -43,31 +54,32 @@
               <div id="certificationsContainer"></div>
             </div>
             <div class="item">
-              <h2>EDUCATION</h2>
+              <h2>Education</h2>
               <div class="smallText">
-                <p class="bolded white">Bachelor of Economics</p>
-                <p>The University of Sydney</p>
-                <p>2010 - 2014</p>
+                <p class="bolded white">Bachelor of Engineering</p>
+                <p>Rajiv Gandhi Technical University</p>
+                <p>2007 - 2011</p>
               </div>
             </div>
           </div>
         </div>
         <div class="rightPanel">
-          <div>
+          <!-- <div>
             <h1>Anand Bhandari</h1>
             <div class="smallText">
               <h3>Chief Technology Officer</h3>
             </div>
-          </div>
+          </div> -->
           <div>
             <h2>Summary</h2>
             <div class="smallText">
               <p>
-                With over a decade of experience as a Chief Technology Officer, I've led innovation in renewable energy
-                and education sectors. Skilled in technology management, API integration, and software development, I've
-                spearheaded projects such as integrating HubSpot API for enhanced customer engagement at SOLS Energy. My
-                background includes managing software development teams and contributing to various web and mobile
-                projects, all driven by a passion for leveraging technology to create positive societal impact.
+                With over 10+ years of experience on various web technologies I am currently working as a Chief
+                Technology Officer at SOLS Energy, Malaysia. I've led innovation in renewable energy and education
+                sectors. Skilled in technology management, API integration, and software development, I've spearheaded
+                projects such as integrating HubSpot API for enhanced customer engagement at SOLS Energy. My background
+                includes managing software development teams and contributing to various web and mobile projects, all
+                driven by a passion for leveraging technology to create positive societal impact.
               </p>
             </div>
           </div>
@@ -94,7 +106,6 @@
       "Firebase",
       "Google Cloud Platform",
       "docker",
-
       "Node.js",
       "Express.js",
       "Redux",
@@ -104,8 +115,8 @@
       "SASS/SCSS",
       "Bootstrap",
       "Tailwind CSS",
-      "jQuery",
-      "AngularJS",
+      "Material UI",
+      "Tailwind CSS",
       "GraphQL",
       "RESTful APIs",
       "JSON",
@@ -113,12 +124,16 @@
       "React Native",
       "Next.js",
       "Webpack",
+      "Microservices",
+      "Docker",
+      "Python",
+      "AI/ML",
     ];
 
     const container = document.getElementById("skillsContainer");
 
     skills.forEach((skill) => {
-      const skillDiv = document.createElement("span");
+      const skillDiv = document.createElement("li");
       skillDiv.className = "skill";
 
       skillDiv.innerHTML = `${skill} `;
@@ -130,7 +145,7 @@
       {
         position: "Chief Technology Officer",
         date: "Jan 2019 - Present",
-        projectName: "SOLS Energy",
+        projectName: "SOLS Energy, Malaysia",
         description: `As the CTO at SOLS Energy, I have spearheaded transformative initiatives, leveraging cutting-edge
      technologies to enhance our services and drive business growth. My role encompasses creating and
      implementing innovative solutions that connect seamlessly with our cloud functions and propel our
@@ -145,7 +160,7 @@
       {
         position: "Chief Technology Officer",
         date: "Jan 2021 - Present",
-        projectName: "SOLS Foundation",
+        projectName: "SOLS Foundation, Malaysia",
         description: `As the Chief Technology Officer (CTO) at SOLS FOUNDATION (SOLS 24/7), I oversee all technical solutions and software process management. My responsibilities include:
 
     Internal Software Support: Providing internal support to address and resolve software-related issues, serving as a dependable resource for troubleshooting.`,
@@ -161,7 +176,7 @@
       {
         position: "Team Lead - Software Development",
         date: " Jan 2019 - Jan 2021",
-        projectName: "SOLS 24/7",
+        projectName: "SOLS 24/7, Malaysia",
         description: `Managed software development teams and was the primary developer for several software projects.
  Responsible for Android, Web, Mobile, and IOS development projects for a company. Sols SMART,
  SOLS EDUCATION, SOLS CLASSROOM apps and websites are managed and actively developed`,
@@ -175,8 +190,8 @@
       },
       {
         position: " Web and Mobile Developer",
-        date: " MINDIII Systems Pvt. Ltd.",
-        projectName: " Aug 2016 - Jul 2017 (1 year)",
+        date: "Aug 2016 - Jul 2017 (1 year)",
+        projectName: "  MINDIII Systems Pvt. Ltd., India ",
         description: `Designed and built mobile apps, XML, JSON, HTTP, and REST have all been used to implement
  communication protocols. Using RESTful APIs to connect Android apps to back-end services and web
  services Design concepts, patterns, and best practises for Android UI design Performance tuning,
@@ -191,7 +206,7 @@
       {
         position: " Software Developer",
         date: " Jan 2013 - Jul 2016 (3 years 7 months)",
-        projectName: "IBM",
+        projectName: "IBM, India",
         description: `Understanding the client's needs and functional specifications. Creating logic for a client-side web
  application. Create front-end modules and components. Maintenance of the website and resolution of
  complex performance issues Designed a portal user interface with mobile responsive layouts using
@@ -205,7 +220,7 @@
       {
         position: " Software Developer",
         date: " Dec 2011 - Dec 2012 (1 year 1 month)",
-        projectName: "ManpowerGroup",
+        projectName: "ManpowerGroup, India",
         description: ` During my tenure I developed websites and web applications which exploited latest trend and web
  technologies ranging from HTML, HTML5, CSS2, CSS3, jQuery, WordPress, Photoshop etc.`,
         bulletPoints: [],
@@ -214,7 +229,7 @@
       {
         position: " Web Developer",
         date: " Jan 2009 - Jan 2011 (2 years 1 month)",
-        projectName: " myMO IT Solutions",
+        projectName: " myMO IT Solutions, India",
         description: ` Worked on various web development projects and developed websites and web applications which
         exploited latest trend and web technologies ranging from HTML, HTML5, CSS2, CSS3, jQuery,
         WordPress, Photoshop etc.`,
@@ -255,27 +270,11 @@
     const certifications = [
       {
         name: "Github CoPilot for Beginners: Write Software With AI - Coursera Project Network SFY992GFP6Q5",
-        link: "https://example.com/certificate",
+        link: "https://www.coursera.org/account/accomplishments/records/SFY992GFP6Q5",
       },
       {
-        name: "Github CoPilot for Beginners: Write Software With AI - Coursera Project Network SFY992GFP6Q5",
-        link: "https://example.com/certificate",
-      },
-      {
-        name: "Github CoPilot for Beginners: Write Software With AI - Coursera Project Network SFY992GFP6Q5",
-        link: "https://example.com/certificate",
-      },
-      {
-        name: "Github CoPilot for Beginners: Write Software With AI - Coursera Project Network SFY992GFP6Q5",
-        link: "https://example.com/certificate",
-      },
-      {
-        name: "Github CoPilot for Beginners: Write Software With AI - Coursera Project Network SFY992GFP6Q5",
-        link: "https://example.com/certificate",
-      },
-      {
-        name: "Github CoPilot for Beginners: Write Software With AI - Coursera Project Network SFY992GFP6Q5",
-        link: "https://example.com/certificate",
+        name: "Defending Against AI-Generated Attacks Course - Codecademy",
+        link: "https://www.codecademy.com/profiles/anandBhandari8744803054/certificates/b1f41fdb4d334e729068fbf22325aa85",
       },
     ];
 
@@ -303,21 +302,21 @@
       {
         projectName: "Sols Foundation PWA",
         description:
-          "A progressive web app that allows users to monitor their energy consumption and solar panel performance in real-time. The app is built using React and integrates with the SOLS Energy API to provide users with accurate data.",
+          "SOLS 24/7 envisions that people from all communities – regardless of race, religion or gender – will have access to education and social empowerment services, resulting in developed societies with equal opportunities for all.",
         technologiesUsed: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://solsfoundation.com",
       },
       {
         projectName: "Sols 24/7 PWA",
         description:
-          "A progressive web app that allows users to monitor their energy consumption and solar panel performance in real-time. The app is built using React and integrates with the SOLS Energy API to provide users with accurate data.",
+          "SOLS edu makes English, Digital Skills and Soft Skills accessible to all by providing affordable high-quality courses through our learning web app. We are backed by 30 years of R&D and 21 years of teaching experience. We teach using the learner’s native language, so new knowledge is easy to comprehend. More than 50,000 students across Southeast Asia have studied through our app so far – and we are just getting started!",
         technologiesUsed: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://sols247.org",
       },
       {
         projectName: "Sols Edu PWA",
         description:
-          "A progressive web app that allows users to monitor their energy consumption and solar panel performance in real-time. The app is built using React and integrates with the SOLS Energy API to provide users with accurate data.",
+          "A subscription-based e-learning platform that offers a wide range of courses in English, Digital Skills, and Soft Skills. The platform is built using HTML, CSS, and JavaScript and is designed to be user-friendly and accessible to all users.",
         technologiesUsed: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://solsedu.com",
       },
@@ -361,6 +360,36 @@
       li.appendChild(linksDiv);
 
       containerProject.appendChild(li);
+    });
+
+    const platforms = [
+      "Vercel",
+      "Respond.io",
+      "Google Cloud Platform",
+      "Heroku",
+      "AWS (Amazon Web Services)",
+      "Microsoft Azure",
+      "Firebase",
+      "DigitalOcean",
+      "GitHub Pages",
+      "Strapi",
+      "WordPress",
+      "Shopify",
+      "Magento",
+      "SendGrid",
+      "MailGun",
+      "Twilio",
+      "Stripe",
+      "Payex",
+      "CTOS",
+    ];
+    const platformscontainer = document.getElementById("platformsContainer");
+
+    platforms.forEach((platform) => {
+      const li = document.createElement("li");
+      li.className = "platform";
+      li.textContent = platform;
+      platformscontainer.appendChild(li);
     });
   </script>
 </html>
