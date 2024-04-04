@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -14,7 +17,10 @@
             <div class="item bottomLineSeparator">
               <div class="smallText">
                 <h2>Anand Bhandari</h2>
-                <p>AI & ML Enthusiast | Full Stack Developer | CTO</p>
+                <p>
+                  Technical Lead & CTO | Full Stack Developer at SOLS Group
+                  Malaysia | Tech Enthusiast
+                </p>
                 <br />
               </div>
               <h2>Contact</h2>
@@ -26,15 +32,27 @@
                 </p>
                 <p>
                   <i class="fa fa-envelope contactIcon" aria-hidden="true"></i>
-                  <a href="mailto:anand.enigmahit@gmail.com"> anand.enigmahit@gmail.com </a>
+                  <a href="mailto:anand.enigmahit@gmail.com">
+                    anand.enigmahit@gmail.com
+                  </a>
                 </p>
                 <p>
-                  <i class="fa fa-map-marker contactIcon" aria-hidden="true"></i>
+                  <i
+                    class="fa fa-map-marker contactIcon"
+                    aria-hidden="true"
+                  ></i>
                   Kuala Lumpur, Malaysia
                 </p>
                 <p>
-                  <i class="fa fa-linkedin-square contactIcon" aria-hidden="true"></i>
-                  <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/"> in/anand-bhandari-b98900164 </a>
+                  <i
+                    class="fa fa-linkedin-square contactIcon"
+                    aria-hidden="true"
+                  ></i>
+                  <a
+                    href="https://www.linkedin.com/in/anand-bhandari-b98900164/"
+                  >
+                    in/anand-bhandari-b98900164
+                  </a>
                 </p>
               </div>
             </div>
@@ -74,12 +92,16 @@
             <h2>Summary</h2>
             <div class="smallText">
               <p>
-                With over 10+ years of experience on various web technologies I am currently working as a Chief
-                Technology Officer at SOLS Energy, Malaysia. I've led innovation in renewable energy and education
-                sectors. Skilled in technology management, API integration, and software development, I've spearheaded
-                projects such as integrating HubSpot API for enhanced customer engagement at SOLS Energy. My background
-                includes managing software development teams and contributing to various web and mobile projects, all
-                driven by a passion for leveraging technology to create positive societal impact.
+                With over 10+ years of experience on various web technologies I
+                am currently working as a Chief Technology Officer at SOLS
+                Energy, Malaysia. I've led innovation in renewable energy and
+                education sectors. Skilled in technology management, API
+                integration, and software development, I've spearheaded projects
+                such as integrating HubSpot API for enhanced customer engagement
+                at SOLS Energy. My background includes managing software
+                development teams and contributing to various web and mobile
+                projects, all driven by a passion for leveraging technology to
+                create positive societal impact.
               </p>
             </div>
           </div>
@@ -259,7 +281,9 @@
       smallTextDiv.innerHTML = `
         <p>${job.description}</p>
         <ul>
-          ${job.bulletPoints.map((point) => `<li><p>${point}</p></li>`).join("")}
+          ${job.bulletPoints
+            .map((point) => `<li><p>${point}</p></li>`)
+            .join("")}
         </ul>
        `;
       li.appendChild(smallTextDiv);
@@ -278,7 +302,9 @@
       },
     ];
 
-    const containerCertification = document.getElementById("certificationsContainer");
+    const containerCertification = document.getElementById(
+      "certificationsContainer"
+    );
 
     certifications.forEach((certification) => {
       const li = document.createElement("div");
@@ -296,7 +322,14 @@
         projectName: "Sols Energy PWA",
         description:
           "A progressive web app that allows users to monitor their energy consumption and solar panel performance in real-time. The app is built using React and integrates with the SOLS Energy API to provide users with accurate data.",
-        technologiesUsed: ["REACT", "NEXT", "BUILDER.IO", "QWIK", "FIREBASE", ""],
+        technologiesUsed: [
+          "REACT",
+          "NEXT",
+          "BUILDER.IO",
+          "QWIK",
+          "FIREBASE",
+          "",
+        ],
         githubLink: "https://solsenergy.com",
       },
       {
