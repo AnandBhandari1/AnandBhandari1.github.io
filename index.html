@@ -949,6 +949,96 @@
         }
         .edu-detail-item h4 { font-size: 0.875rem; font-weight: 700; margin-bottom: 2px; }
         .edu-detail-item p { font-size: 0.8125rem; color: var(--text-secondary); }
+
+        /* YouTube Channels */
+        .youtube { background: var(--bg-darkest); }
+        .yt-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+            max-width: 1000px; margin: 0 auto;
+        }
+        .yt-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px 24px;
+            text-decoration: none; color: var(--text);
+            transition: all 0.3s; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        .yt-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 3px; background: #ff0033; opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .yt-card:hover::before { opacity: 1; }
+        .yt-card:hover {
+            border-color: rgba(255,0,51,0.4); transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255,0,51,0.08);
+        }
+        .yt-avatar {
+            width: 64px; height: 64px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.75rem; margin-bottom: 16px;
+            background: rgba(255,0,51,0.1); border: 2px solid rgba(255,0,51,0.2);
+        }
+        .yt-card h3 { font-size: 1.0625rem; font-weight: 700; margin-bottom: 4px; }
+        .yt-handle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem; color: rgba(255,0,51,0.8); margin-bottom: 12px; font-weight: 500;
+        }
+        .yt-desc {
+            font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;
+        }
+        .yt-lang {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.1em; padding: 4px 12px; border-radius: 20px;
+            margin-top: auto;
+        }
+        .yt-lang.en { background: rgba(6,182,212,0.1); color: var(--accent-bright); }
+        .yt-lang.hi { background: rgba(245,158,11,0.1); color: #fbbf24; }
+        .yt-lang.mix { background: rgba(139,92,246,0.1); color: #a78bfa; }
+
+        /* Udemy Courses */
+        .udemy { background: var(--bg-dark); }
+        .udemy-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+            max-width: 1000px; margin: 0 auto;
+        }
+        .udemy-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden;
+            text-decoration: none; color: var(--text);
+            transition: all 0.3s;
+        }
+        .udemy-card:hover {
+            border-color: rgba(164,92,255,0.4); transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(164,92,255,0.08);
+        }
+        .udemy-thumb {
+            height: 140px; display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; position: relative;
+        }
+        .udemy-thumb::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 60%, var(--bg-card));
+        }
+        .udemy-body { padding: 20px 24px 24px; }
+        .udemy-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+        .udemy-meta {
+            font-size: 0.75rem; color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            display: flex; gap: 16px; margin-bottom: 12px;
+        }
+        .udemy-body p { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.6; }
+        .udemy-rating {
+            margin-top: 12px; font-size: 0.8125rem; color: #fbbf24; font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .yt-grid, .udemy-grid { grid-template-columns: 1fr; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .yt-grid, .udemy-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
@@ -1867,6 +1957,110 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Channels -->
+    <section class="youtube" id="youtube">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-label">Content Creator</span>
+                <h2 class="section-title">YouTube Channels</h2>
+                <p class="section-subtitle">I create content across multiple channels — covering tech, AI, coding, productivity, and education in both English and Hindi.</p>
+            </div>
+            <div class="yt-grid">
+                <a href="https://www.youtube.com/@CTO24x7" target="_blank" rel="noopener" class="yt-card fade-up">
+                    <div class="yt-avatar">&#128187;</div>
+                    <h3>CTO24x7</h3>
+                    <div class="yt-handle">@CTO24x7</div>
+                    <p class="yt-desc">Tech leadership, AI trends, system architecture, and CTO insights for developers and founders.</p>
+                    <span class="yt-lang en">English</span>
+                </a>
+                <a href="https://www.youtube.com/@anandbhandari" target="_blank" rel="noopener" class="yt-card fade-up">
+                    <div class="yt-avatar">&#128104;&#8205;&#128187;</div>
+                    <h3>Anand Bhandari</h3>
+                    <div class="yt-handle">@anandbhandari</div>
+                    <p class="yt-desc">Tech tutorials, development tips, and industry insights — making technology accessible in Hindi.</p>
+                    <span class="yt-lang hi">Hindi</span>
+                </a>
+                <a href="https://www.youtube.com/@CodePanchayat" target="_blank" rel="noopener" class="yt-card fade-up">
+                    <div class="yt-avatar">&#128296;</div>
+                    <h3>CodePanchayat</h3>
+                    <div class="yt-handle">@CodePanchayat</div>
+                    <p class="yt-desc">Coding tutorials, AI tool reviews, and developer updates — building India's coding community in Hindi.</p>
+                    <span class="yt-lang hi">Hindi</span>
+                </a>
+                <a href="https://www.youtube.com/@AICodeAnand" target="_blank" rel="noopener" class="yt-card fade-up">
+                    <div class="yt-avatar">&#129302;</div>
+                    <h3>AICodeAnand</h3>
+                    <div class="yt-handle">@AICodeAnand</div>
+                    <p class="yt-desc">AI news, tool breakdowns, prompt engineering, and the latest in artificial intelligence and automation.</p>
+                    <span class="yt-lang en">English</span>
+                </a>
+                <a href="https://www.youtube.com/@ThinkLeapAi" target="_blank" rel="noopener" class="yt-card fade-up">
+                    <div class="yt-avatar">&#128161;</div>
+                    <h3>ThinkLeap</h3>
+                    <div class="yt-handle">@ThinkLeapAi</div>
+                    <p class="yt-desc">Productivity hacks, knowledge bites, and stickman motivation videos — AI voice-powered short-form content.</p>
+                    <span class="yt-lang en">English</span>
+                </a>
+                <a href="https://www.youtube.com/@learnoye" target="_blank" rel="noopener" class="yt-card fade-up">
+                    <div class="yt-avatar">&#127891;</div>
+                    <h3>LearnOye</h3>
+                    <div class="yt-handle">@learnoye</div>
+                    <p class="yt-desc">Companion channel for learnoye.com — coding walkthroughs, course previews, and tech deep dives.</p>
+                    <span class="yt-lang mix">EN + HI</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Udemy Courses -->
+    <section class="udemy" id="udemy">
+        <div class="container">
+            <div class="section-header fade-up">
+                <span class="section-label">Instructor</span>
+                <h2 class="section-title">Udemy Courses</h2>
+                <p class="section-subtitle">Sharing 15+ years of hands-on experience through structured, practical courses on Udemy.</p>
+            </div>
+            <div class="udemy-grid">
+                <a href="#" class="udemy-card fade-up">
+                    <div class="udemy-thumb" style="background: linear-gradient(135deg, rgba(6,182,212,0.15), rgba(139,92,246,0.15));">&#9889;</div>
+                    <div class="udemy-body">
+                        <h3>Full Stack Web Development with React & Node.js</h3>
+                        <div class="udemy-meta">
+                            <span>42 hours</span>
+                            <span>250+ lectures</span>
+                        </div>
+                        <p>Build production-ready web apps from scratch — React, Next.js, Node.js, MongoDB, deployment, and best practices.</p>
+                        <div class="udemy-rating">&#9733;&#9733;&#9733;&#9733;&#9733; 4.8</div>
+                    </div>
+                </a>
+                <a href="#" class="udemy-card fade-up">
+                    <div class="udemy-thumb" style="background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(236,72,153,0.15));">&#129302;</div>
+                    <div class="udemy-body">
+                        <h3>AI & Machine Learning for Developers</h3>
+                        <div class="udemy-meta">
+                            <span>28 hours</span>
+                            <span>180+ lectures</span>
+                        </div>
+                        <p>Practical AI/ML — prompt engineering, LLMs, AI-powered tools, GitHub CoPilot, and building AI features into your apps.</p>
+                        <div class="udemy-rating">&#9733;&#9733;&#9733;&#9733;&#9733; 4.7</div>
+                    </div>
+                </a>
+                <a href="#" class="udemy-card fade-up">
+                    <div class="udemy-thumb" style="background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(6,182,212,0.15));">&#128640;</div>
+                    <div class="udemy-body">
+                        <h3>Solution Architecture & System Design Masterclass</h3>
+                        <div class="udemy-meta">
+                            <span>35 hours</span>
+                            <span>200+ lectures</span>
+                        </div>
+                        <p>Design scalable systems — microservices, cloud architecture, AWS/GCP, database design, and real-world case studies.</p>
+                        <div class="udemy-rating">&#9733;&#9733;&#9733;&#9733;&#9733; 4.9</div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
