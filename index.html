@@ -517,11 +517,14 @@
         .project-tag.purple { background: rgba(139,92,246,0.15); color: #a78bfa; }
         .project-tag.green { background: rgba(16,185,129,0.15); color: #34d399; }
         .project-tag.amber { background: rgba(245,158,11,0.15); color: #fbbf24; }
+        .project-tag.pink { background: rgba(236,72,153,0.15); color: #f472b6; }
         .project-header h3 { font-size: 1.375rem; font-weight: 700; margin-bottom: 6px; }
         .project-header .project-company {
             font-size: 0.875rem; color: var(--text-muted);
             font-family: 'JetBrains Mono', monospace;
+            text-decoration: none; transition: color 0.2s;
         }
+        a.project-company:hover { color: var(--accent-bright); }
         .project-body { padding: 24px 32px 32px; }
         .project-metrics { display: flex; gap: 32px; margin-bottom: 20px; }
         .project-metric-val {
@@ -1388,37 +1391,96 @@
             <div class="projects-grid">
                 <div class="project-card fade-up">
                     <div class="project-header">
-                        <span class="project-tag cyan">PWA & Renewable Energy</span>
-                        <h3>SOLS Energy PWA</h3>
-                        <span class="project-company">solsenergy.com</span>
+                        <span class="project-tag cyan">Renewable Energy Platform</span>
+                        <h3>SOLS Energy</h3>
+                        <a href="https://solsenergy.com" target="_blank" rel="noopener" class="project-company">solsenergy.com &#8599;</a>
                     </div>
                     <div class="project-body">
                         <div class="project-metrics">
                             <div>
-                                <div class="project-metric-val">10K+</div>
-                                <div class="project-metric-label">Active Users</div>
+                                <div class="project-metric-val">2,600+</div>
+                                <div class="project-metric-label">Installations</div>
                             </div>
                             <div>
-                                <div class="project-metric-val">40%</div>
-                                <div class="project-metric-label">Lead Conversion</div>
+                                <div class="project-metric-val">30+ MW</div>
+                                <div class="project-metric-label">Generated</div>
                             </div>
                         </div>
                         <ul class="project-list">
-                            <li>Progressive web app for monitoring energy consumption and solar panel performance in real-time</li>
-                            <li>Integrated HubSpot API for enhanced customer engagement and sales pipeline</li>
-                            <li>Collaborated with marketing on real-time solar energy production dashboards</li>
+                            <li>Malaysia's leading residential solar company — built the full digital platform for solar panel design, installation booking, and real-time energy monitoring</li>
+                            <li>Integrated HubSpot CRM, payment gateways, and NEM Rakyat government incentive tracking for seamless lead-to-installation pipeline</li>
+                            <li>Built ChargeSingh EV charging portal and Solar Academy training platform for B40 community members</li>
+                            <li>Architected "one-for-one" model system: each residential install automatically triggers pico solar allocation for off-grid Orang Asli households</li>
                         </ul>
                         <div class="project-stack">
-                            <span>React</span><span>Next.js</span><span>Builder.io</span><span>Qwik</span><span>Firebase</span>
+                            <span>React</span><span>Next.js</span><span>Builder.io</span><span>Qwik</span><span>Firebase</span><span>HubSpot API</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card fade-up">
                     <div class="project-header">
-                        <span class="project-tag green">Social Impact</span>
-                        <h3>SOLS Foundation PWA</h3>
-                        <span class="project-company">solsfoundation.com</span>
+                        <span class="project-tag green">Green Fintech</span>
+                        <h3>SOLS Green</h3>
+                        <a href="https://sols.green" target="_blank" rel="noopener" class="project-company">sols.green &#8599;</a>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-metrics">
+                            <div>
+                                <div class="project-metric-val">RM 0</div>
+                                <div class="project-metric-label">Upfront Cost</div>
+                            </div>
+                            <div>
+                                <div class="project-metric-val">90%</div>
+                                <div class="project-metric-label">Bill Savings</div>
+                            </div>
+                        </div>
+                        <ul class="project-list">
+                            <li>Built a fintech platform simplifying access to green energy solutions — transparent pricing, zero-friction customer onboarding, and instant solar financing</li>
+                            <li>Engineered end-to-end customer journey from power study assessment to installation scheduling with real-time status tracking</li>
+                            <li>Integrated Google Analytics, Google Ads conversion tracking, and Facebook Pixel for full-funnel marketing attribution</li>
+                            <li>Partnered platform with SOLS Energy and Social Empresa for expanded service delivery across Malaysia</li>
+                        </ul>
+                        <div class="project-stack">
+                            <span>Next.js</span><span>React</span><span>TypeScript</span><span>Analytics</span><span>Payment APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-header">
+                        <span class="project-tag purple">Non-Profit Social Impact</span>
+                        <h3>SOLS Foundation</h3>
+                        <a href="https://sols.foundation" target="_blank" rel="noopener" class="project-company">sols.foundation &#8599;</a>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-metrics">
+                            <div>
+                                <div class="project-metric-val">4,000+</div>
+                                <div class="project-metric-label">Families Served</div>
+                            </div>
+                            <div>
+                                <div class="project-metric-val">100%</div>
+                                <div class="project-metric-label">Free Education</div>
+                            </div>
+                        </div>
+                        <ul class="project-list">
+                            <li>Built the digital ecosystem for Malaysia's tax-exempt non-profit — free education and employment support for the bottom 40% population</li>
+                            <li>Developed Skills Hub, Solar Academy (3-month scholarship program), and TVET Academy platforms with LMS for enrollment, tracking, and certification</li>
+                            <li>Architected B40 vulnerability mapping tools for NGOs and social entrepreneurs</li>
+                            <li>Integrated partnerships with Meta, AWS, IBM, HRD Corp, and Obama Foundation Scholars into the platform</li>
+                        </ul>
+                        <div class="project-stack">
+                            <span>React</span><span>Next.js</span><span>PWA</span><span>Cloud Functions</span><span>Firebase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card fade-up">
+                    <div class="project-header">
+                        <span class="project-tag amber">E-Learning Platform</span>
+                        <h3>SOLS Edu</h3>
+                        <a href="https://solsedu.com" target="_blank" rel="noopener" class="project-company">solsedu.com &#8599;</a>
                     </div>
                     <div class="project-body">
                         <div class="project-metrics">
@@ -1427,54 +1489,56 @@
                                 <div class="project-metric-label">Students</div>
                             </div>
                             <div>
-                                <div class="project-metric-val">3</div>
-                                <div class="project-metric-label">Countries</div>
+                                <div class="project-metric-val">4</div>
+                                <div class="project-metric-label">Languages</div>
                             </div>
                         </div>
                         <ul class="project-list">
-                            <li>Platform empowering communities regardless of race, religion or gender with education access</li>
-                            <li>Oversaw all technical solutions and software process management</li>
-                            <li>Led software solution design and internal software support</li>
+                            <li>Built a subscription-based e-learning PWA for English, Digital Skills, and Soft Skills — serving 50K+ students across Southeast Asia</li>
+                            <li>Multi-language instruction in Bahasa Malaysia, Mandarin, Indonesian, and Tamil with Cambridge English certification pathway</li>
+                            <li>Developed live online classes, self-paced courses, and progress tracking with 100% money-back guarantee system</li>
+                            <li>Accredited platform: HRD Corp training provider, MSC Malaysia, Google for Education partner, and Meta Certified Programs</li>
                         </ul>
                         <div class="project-stack">
-                            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Cloud Functions</span>
+                            <span>React</span><span>Next.js</span><span>MUI</span><span>Node.js</span><span>MongoDB</span><span>PWA</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card fade-up">
                     <div class="project-header">
-                        <span class="project-tag purple">E-Learning Platform</span>
-                        <h3>SOLS Edu PWA</h3>
-                        <span class="project-company">solsedu.com</span>
+                        <span class="project-tag pink">AI-Powered EdTech</span>
+                        <h3>ACE — AI English Learning App</h3>
+                        <a href="https://ace.solsedu.com" target="_blank" rel="noopener" class="project-company">ace.solsedu.com &#8599;</a>
                     </div>
                     <div class="project-body">
                         <div class="project-metrics">
                             <div>
-                                <div class="project-metric-val">50K+</div>
-                                <div class="project-metric-label">Students</div>
+                                <div class="project-metric-val">800K+</div>
+                                <div class="project-metric-label">Learners</div>
                             </div>
                             <div>
-                                <div class="project-metric-val">50+</div>
-                                <div class="project-metric-label">Courses</div>
+                                <div class="project-metric-val">Free</div>
+                                <div class="project-metric-label">100% Free</div>
                             </div>
                         </div>
                         <ul class="project-list">
-                            <li>Subscription-based e-learning platform for English, Digital Skills, and Soft Skills</li>
-                            <li>Backed by 30 years of R&D and 21 years of teaching experience</li>
-                            <li>Teaches using learner's native language across Southeast Asia</li>
+                            <li>Led development of an AI-powered English learning app for Malaysian students targeting SPM exam excellence — web app + React Native mobile app</li>
+                            <li>Built adaptive learning engine that creates personalized study paths based on diagnostic placement tests and individual gap analysis</li>
+                            <li>Developed timed mock exams mimicking actual SPM format, video lessons with practice exercises, and real-time progress tracking</li>
+                            <li>Backed by 25+ years of teaching methodology — reached 800K+ learners across Malaysia and beyond</li>
                         </ul>
                         <div class="project-stack">
-                            <span>React</span><span>Node.js</span><span>MongoDB</span><span>PWA</span>
+                            <span>React Native</span><span>React</span><span>AI/ML</span><span>Node.js</span><span>TypeScript</span><span>Firebase</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="project-card fade-up">
                     <div class="project-header">
-                        <span class="project-tag amber">Education & Mobile</span>
-                        <h3>SOLS 24/7 PWA</h3>
-                        <span class="project-company">sols247.org</span>
+                        <span class="project-tag cyan">Education & Mobile Suite</span>
+                        <h3>SOLS 24/7 Ecosystem</h3>
+                        <a href="https://sols247.org" target="_blank" rel="noopener" class="project-company">sols247.org &#8599;</a>
                     </div>
                     <div class="project-body">
                         <div class="project-metrics">
@@ -1483,17 +1547,18 @@
                                 <div class="project-metric-label">Team Size</div>
                             </div>
                             <div>
-                                <div class="project-metric-val">90%</div>
-                                <div class="project-metric-label">Retention</div>
+                                <div class="project-metric-val">5</div>
+                                <div class="project-metric-label">Apps Built</div>
                             </div>
                         </div>
                         <ul class="project-list">
-                            <li>Managed SOLS SMART, SOLS EDUCATION, SOLS CLASSROOM apps and websites</li>
-                            <li>Primary developer for Android, Web, Mobile, and iOS projects</li>
-                            <li>Scaled engineering team from 5 to 20+ across multiple squads</li>
+                            <li>Managed the entire SOLS 24/7 tech ecosystem — SOLS SMART, SOLS EDUCATION, SOLS CLASSROOM apps and websites</li>
+                            <li>Primary developer for Android, iOS, and Web — built cross-platform mobile apps with React Native from scratch</li>
+                            <li>Scaled engineering team from 5 to 20+ developers across multiple squads with Agile methodology</li>
+                            <li>Established CI/CD pipelines, code review processes, and quality gates across all projects</li>
                         </ul>
                         <div class="project-stack">
-                            <span>React Native</span><span>Agile</span><span>CI/CD</span><span>REST APIs</span>
+                            <span>React Native</span><span>React</span><span>Node.js</span><span>Agile</span><span>CI/CD</span><span>REST APIs</span>
                         </div>
                     </div>
                 </div>
