@@ -145,10 +145,12 @@
         }
         .hero-content {
             display: grid; grid-template-columns: 1.3fr 1fr;
+            grid-template-rows: auto 1fr;
             gap: 80px; align-items: center; position: relative; z-index: 1;
         }
         .hero-top {
-            display: flex; align-items: flex-start; gap: 24px;
+            grid-column: 1 / -1;
+            display: flex; align-items: flex-start; justify-content: center; gap: 24px;
             margin-bottom: 28px; flex-wrap: wrap;
         }
         .hero-avatar-wrap {
@@ -165,28 +167,94 @@
             display: block;
         }
         .hero-typewriter {
-            flex: 1; min-width: 0;
+            flex: 0 1 auto; min-width: 0;
             padding: 16px 20px; max-width: 380px;
             background: linear-gradient(135deg, rgba(6,182,212,0.08) 0%, rgba(139,92,246,0.05) 100%);
             border: 1px solid rgba(6,182,212,0.2);
             border-radius: 12px;
             font-size: 0.9375rem; line-height: 1.6;
             color: var(--text-secondary);
-            font-style: italic;
             position: relative;
             box-shadow: 0 0 20px rgba(6,182,212,0.06);
         }
-        .hero-typewriter::before {
-            content: '"'; position: absolute; top: 12px; left: 14px;
-            font-size: 1.5rem; color: var(--accent); opacity: 0.6;
-            font-family: Georgia, serif;
+        .typewriter-chat {
+            display: flex; flex-direction: column; gap: 12px;
+            min-height: 2.5em;
+            margin: 0 8px;
         }
-        .hero-typewriter .typewriter-text {
-            padding-left: 8px; min-height: 1.6em;
+        .chat-row { display: flex; align-items: flex-start; gap: 8px; animation: chatFadeIn 0.3s ease; }
+        .chat-row.question { justify-content: flex-end; }
+        .chat-row.answer { justify-content: flex-start; }
+        .chat-row.question .chat-bubble { border-left: none; border-right: 3px solid var(--accent); }
+        .chat-row.answer .chat-bubble { border-left: 3px solid rgba(139,92,246,0.5); border-right: 1px solid var(--border); }
+        .chat-avatar {
+            width: 28px; height: 28px; min-width: 28px; min-height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #64748b, #475569);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; flex-shrink: 0;
+            overflow: hidden;
         }
-        .hero-typewriter .typewriter-cursor {
-            display: inline-block; width: 2px; height: 1em; margin-left: 2px;
+        .chat-avatar.user {
+            background: none; padding: 0;
+        }
+        .chat-avatar.user img {
+            width: 100%; height: 100%;
+            object-fit: cover; border-radius: 50%;
+        }
+        .chat-bubble {
+            padding: 10px 14px;
+            width: 280px; min-width: 280px; max-width: 280px;
+            border-radius: 12px;
+            font-size: 0.8125rem; line-height: 1.55;
+            color: var(--text);
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            text-align: left;
+            direction: ltr;
+            position: relative;
+        }
+        .chat-row.question .chat-bubble {
+            background: var(--bg-card);
+            border-radius: 12px 8px 12px 12px;
+            margin-right: 6px;
+        }
+        .chat-row.question .chat-bubble::before {
+            content: '';
+            position: absolute; right: -7px; top: 12px;
+            width: 0; height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 7px solid var(--bg-card);
+        }
+        .chat-row.question .chat-bubble::after {
+            content: '';
+            position: absolute; right: -8px; top: 12px;
+            width: 0; height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 7px solid var(--border);
+        }
+        .chat-row.answer .chat-bubble {
+            background: linear-gradient(135deg, rgba(6,182,212,0.12) 0%, rgba(139,92,246,0.08) 100%);
+            border-radius: 8px 12px 12px 12px;
+            margin-left: 6px;
+        }
+        .chat-row.answer .chat-bubble::before {
+            content: '';
+            position: absolute; left: -7px; top: 12px;
+            width: 0; height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-right: 7px solid rgba(6,182,212,0.12);
+        }
+        .chat-bubble.typing { border-left-color: var(--accent-2); }
+        .chat-row.answer .chat-bubble.typing { border-left-color: var(--accent-bright); }
+        @keyframes chatFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+        .typewriter-cursor {
+            display: inline-block; width: 4px; height: 1.1em; margin-left: 3px;
             background: var(--accent); vertical-align: text-bottom;
+            border-radius: 1px;
             animation: typewriterBlink 0.8s step-end infinite;
         }
         @keyframes typewriterBlink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
@@ -331,23 +399,30 @@
             position: relative; display: flex;
             justify-content: center; align-items: center;
         }
-        .avatar-ring {
-            width: 280px; height: 280px; border-radius: 50%;
-            background: var(--gradient-main); padding: 4px;
+        .summary-visual-inner {
+            position: relative; display: inline-block;
+        }
+        .summary-visual-ring {
+            width: 200px; height: 200px; border-radius: 50%;
+            background: var(--gradient-main);
+            padding: 4px;
             position: relative;
             animation: rotate-slow 20s linear infinite;
+            box-shadow: 0 0 60px rgba(6,182,212,0.2), 0 0 0 1px rgba(255,255,255,0.04) inset;
         }
         @keyframes rotate-slow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .avatar-inner {
+        .summary-visual-core {
             width: 100%; height: 100%; border-radius: 50%;
             background: var(--bg-dark);
             display: flex; align-items: center; justify-content: center;
-            overflow: hidden;
             animation: rotate-slow 20s linear infinite reverse;
         }
-        .avatar-inner img {
-            width: 100%; height: 100%;
-            object-fit: cover;
+        .summary-visual-icon {
+            font-size: 4rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .orbit-badge {
             position: absolute; padding: 8px 16px;
@@ -859,6 +934,7 @@
             .hero-top { margin-bottom: 24px; }
             .hero-avatar-wrap { width: 96px; height: 96px; }
             .hero-typewriter { max-width: 100%; font-size: 0.875rem; padding: 12px 16px; }
+            .chat-bubble { width: 100%; min-width: 0; max-width: 100%; }
             .hero-title { font-size: 3.5rem; }
             .hero-terminal { max-width: 500px; }
             .summary-content { grid-template-columns: 1fr; gap: 48px; }
@@ -1251,16 +1327,15 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-top">
-                        <div class="hero-avatar-wrap">
-                            <img src="anand-avatar.png" alt="Anand Bhandari">
-                        </div>
-                        <div class="hero-typewriter">
-                            <span class="typewriter-text" id="typewriterText"></span>
-                            <span class="typewriter-cursor" id="typewriterCursor"></span>
-                        </div>
+                <div class="hero-top">
+                    <div class="hero-avatar-wrap">
+                        <img src="anand-avatar.png" alt="Anand Bhandari">
                     </div>
+                    <div class="hero-typewriter">
+                        <div class="typewriter-chat" id="typewriterChat"></div>
+                    </div>
+                </div>
+                <div class="hero-text">
                     <div class="hero-status">Open to Strategic Opportunities</div>
                     <h1 class="hero-title">
                         I Build<br>
@@ -1334,10 +1409,10 @@
         <div class="container">
             <div class="summary-content">
                 <div class="summary-visual fade-up">
-                    <div style="position: relative; display: inline-block;">
-                        <div class="avatar-ring">
-                            <div class="avatar-inner">
-                                <img src="anand-avatar.png" alt="Anand Bhandari">
+                    <div class="summary-visual-inner">
+                        <div class="summary-visual-ring">
+                            <div class="summary-visual-core">
+                                <div class="summary-visual-icon">&#9881;</div>
                             </div>
                         </div>
                         <div class="orbit-badge top">CTO</div>
@@ -2662,49 +2737,93 @@
             });
         });
 
-        // Typewriter quotes
-        const quotes = [
-            "I don't vibe code — I mentor it.",
-            "AI isn't my replacement; it's my junior engineer.",
-            "I don't compete with AI — I assign it tasks.",
-            "AI works with me, not instead of me.",
-            "Do good and keep expectations on airplane mode.",
-            "No matter where life takes me, my heart still craves my hometown food. 🍲"
+        // Q&A chat — one random Q&A set at a time
+        const qaPairs = [
+            { question: "How do you approach code reviews?", answer: "I don't vibe code — I mentor it." },
+            { question: "Are you worried about AI replacing developers?", answer: "AI isn't my replacement; it's my junior engineer." },
+            { question: "What's your take on AI in the workplace?", answer: "I don't compete with AI — I assign it tasks." },
+            { question: "How do you work with AI tools?", answer: "AI works with me, not instead of me." },
+            { question: "What's your philosophy on expectations?", answer: "Do good and keep expectations on airplane mode." },
+            { question: "What do you miss most when traveling?", answer: "No matter where life takes me, my heart still craves my hometown food. 🍲" },
+            { question: "How do you handle ethics in code?", answer: "When it comes to code, I don't bend ethics — I enforce them." },
+            { question: "People say you seem strict at work.", answer: "What comes across as strict is discipline driven by a perfectionist mindset." },
+            { question: "Fine dining or comfort food?", answer: "Fine dining is nice, but my heart still chooses Indian food. 🍛" },
+            { question: "What has struggle taught you?", answer: "I respect the struggle — it teaches the lessons that comfort never will." }
         ];
-        const typewriterEl = document.getElementById('typewriterText');
-        const cursorEl = document.getElementById('typewriterCursor');
-        let quoteIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typeSpeed = 60;
-        const deleteSpeed = 35;
-        const pauseAfterType = 2500;
-        const pauseAfterDelete = 600;
+        const chatEl = document.getElementById('typewriterChat');
+        let pairIndex = 0, wordIndex = 0;
+        const wordSpeed = 90, pauseAfterAnswer = 5000;
+        let typingSpan = null;
+
+        function getRandomPairIndex() {
+            const idx = Math.floor(Math.random() * qaPairs.length);
+            return qaPairs.length > 1 && idx === pairIndex ? (idx + 1) % qaPairs.length : idx;
+        }
+
+        function addQuestionRow(q) {
+            const row = document.createElement('div');
+            row.className = 'chat-row question';
+            row.innerHTML = '<div class="chat-bubble">' + escapeHtml(q) + '</div><div class="chat-avatar">&#129302;</div>';
+            chatEl.appendChild(row);
+        }
+        function addAnswerRow(content, isTyping) {
+            const row = document.createElement('div');
+            row.className = 'chat-row answer';
+            const bubble = document.createElement('div');
+            bubble.className = 'chat-bubble' + (isTyping ? ' typing' : '');
+            if (isTyping) {
+                const span = document.createElement('span');
+                span.className = 'typing-text';
+                const cursor = document.createElement('span');
+                cursor.className = 'typewriter-cursor';
+                bubble.appendChild(span);
+                bubble.appendChild(cursor);
+            } else {
+                bubble.textContent = content;
+            }
+            const avatar = document.createElement('div');
+            avatar.className = 'chat-avatar user';
+            avatar.innerHTML = '<img src="anand-avatar.png" alt="Anand">';
+            row.appendChild(avatar);
+            row.appendChild(bubble);
+            chatEl.appendChild(row);
+            return isTyping ? bubble.querySelector('.typing-text') : null;
+        }
+        function escapeHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+        function buildFullChat() {
+            if (!chatEl) return;
+            chatEl.innerHTML = '';
+            const pair = qaPairs[pairIndex];
+            addQuestionRow(pair.question);
+            typingSpan = addAnswerRow(pair.answer, true);
+        }
 
         function typewriter() {
-            const currentQuote = quotes[quoteIndex];
-            if (isDeleting) {
-                typewriterEl.textContent = currentQuote.substring(0, charIndex - 1);
-                charIndex--;
-                cursorEl.style.opacity = charIndex === 0 ? '0' : '1';
-                setTimeout(typewriter, charIndex > 0 ? deleteSpeed : pauseAfterDelete);
-                if (charIndex === 0) {
-                    isDeleting = false;
-                    quoteIndex = (quoteIndex + 1) % quotes.length;
-                }
-            } else {
-                cursorEl.style.opacity = '1';
-                typewriterEl.textContent = currentQuote.substring(0, charIndex + 1);
-                charIndex++;
-                if (charIndex === currentQuote.length) {
-                    isDeleting = true;
-                    setTimeout(typewriter, pauseAfterType);
+            const pair = qaPairs[pairIndex];
+            const words = pair.answer.split(' ');
+            wordIndex++;
+            if (wordIndex <= words.length) {
+                if (typingSpan) typingSpan.textContent = words.slice(0, wordIndex).join(' ');
+                if (wordIndex === words.length) {
+                    setTimeout(() => {
+                        pairIndex = getRandomPairIndex();
+                        wordIndex = 0;
+                        buildFullChat();
+                        typingSpan = chatEl.querySelector('.typing-text');
+                        setTimeout(typewriter, pauseAfterAnswer);
+                    }, pauseAfterAnswer);
                 } else {
-                    setTimeout(typewriter, typeSpeed);
+                    setTimeout(typewriter, wordSpeed);
                 }
             }
         }
-        if (typewriterEl) setTimeout(typewriter, 800);
+        if (chatEl) {
+            pairIndex = Math.floor(Math.random() * qaPairs.length);
+            buildFullChat();
+            typingSpan = chatEl.querySelector('.typing-text');
+            setTimeout(typewriter, 800);
+        }
     </script>
 </body>
 </html>
