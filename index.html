@@ -49,7 +49,7 @@
             overflow-x: hidden;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
         /* Animated Grid Background */
@@ -369,8 +369,8 @@
         @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
 
         /* Section Base */
-        section { padding: 120px 0; position: relative; }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 72px; }
+        section { padding: 100px 0 120px; position: relative; margin: 0; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 80px; }
         .section-label {
             display: inline-flex; align-items: center; gap: 12px;
             font-family: 'JetBrains Mono', monospace;
@@ -586,6 +586,7 @@
         .solutions { background: var(--bg-dark); }
         .solutions-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+            max-width: 1000px; margin: 0 auto;
         }
         .solution-card {
             background: var(--bg-card); border: 1px solid var(--border);
@@ -606,9 +607,13 @@
         }
         .solution-card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 10px; }
         .solution-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; }
+        .solution-cta-group {
+            display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;
+            justify-content: center;
+        }
         .solution-cta {
             display: inline-flex; align-items: center; gap: 8px;
-            margin-top: 16px; padding: 10px 20px;
+            padding: 10px 20px;
             font-size: 0.8125rem; font-weight: 600;
             color: var(--accent-bright);
             background: rgba(6,182,212,0.08);
@@ -621,6 +626,15 @@
             background: rgba(6,182,212,0.15);
             border-color: var(--accent);
             transform: translateY(-2px);
+        }
+        .solution-cta.solution-cta-linkedin {
+            color: #0a66c2;
+            background: rgba(10,102,194,0.08);
+            border-color: rgba(10,102,194,0.4);
+        }
+        .solution-cta.solution-cta-linkedin:hover {
+            background: rgba(10,102,194,0.15);
+            border-color: #0a66c2;
         }
 
         /* Projects */
@@ -893,16 +907,29 @@
 
         .contact-cta {
             margin-top: 24px; text-align: center;
+            display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center;
         }
-        .contact-email-btn {
+        .contact-email-btn, .contact-linkedin-btn {
             display: inline-flex; align-items: center; gap: 12px;
-            padding: 18px 36px; background: var(--gradient-main);
-            color: white; text-decoration: none;
+            padding: 18px 36px; text-decoration: none;
             border-radius: 14px; font-size: 1.0625rem;
             font-weight: 700; transition: all 0.3s;
+        }
+        .contact-email-btn {
+            background: var(--gradient-main);
+            color: white;
             box-shadow: 0 4px 20px rgba(6,182,212,0.3);
         }
         .contact-email-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(6,182,212,0.4); }
+        .contact-linkedin-btn {
+            background: transparent;
+            color: #0a66c2;
+            border: 2px solid #0a66c2;
+        }
+        .contact-linkedin-btn:hover {
+            background: rgba(10,102,194,0.1);
+            transform: translateY(-3px);
+        }
 
         /* Footer */
         footer {
@@ -943,6 +970,7 @@
         }
 
         @media (max-width: 768px) {
+            .container { padding: 0 24px; }
             .nav-links { display: none; }
             .mobile-menu-btn { display: block; }
             .hero-title { font-size: 2.5rem; }
@@ -962,8 +990,9 @@
             .contact-card { padding: 32px 24px; }
             .footer-content { flex-direction: column; text-align: center; }
             .section-label::before, .section-label::after { display: none; }
-            .skills-cloud { gap: 8px; }
-            .skill-chip { font-size: 0.75rem; padding: 6px 14px; }
+            .skills-cloud { padding: 16px 20px; margin: 0 16px; }
+            .skills-cloud-track { gap: 10px; padding: 12px 16px; }
+            .skill-chip { font-size: 0.65rem; padding: 6px 10px; }
             .skills-tab { padding: 10px 18px; font-size: 0.75rem; }
             .projects-tab { padding: 10px 18px; font-size: 0.75rem; }
             .solutions-tab { padding: 10px 18px; font-size: 0.75rem; }
@@ -1000,60 +1029,69 @@
         .solutions-panel.active { display: block; animation: panelFade 0.3s ease; }
         .services-i-can {
             font-size: 1.25rem; font-weight: 700;
-            color: var(--text); margin-bottom: 16px;
+            color: var(--text); margin-bottom: 24px;
+            text-align: center;
             font-family: 'Inter', sans-serif;
         }
         .services-i-can .dash { color: var(--accent-bright); }
-        .services-techs {
-            display: flex; flex-wrap: wrap; gap: 8px;
-            margin-bottom: 24px;
-        }
-        .services-tech-tag {
-            padding: 6px 14px;
-            font-size: 0.75rem; font-weight: 600;
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(6,182,212,0.08);
-            border: 1px solid rgba(6,182,212,0.25);
-            border-radius: 100px;
-            color: var(--accent-bright);
-        }
 
         /* Tech Skills */
         .skills { background: var(--bg-dark); }
+        .skills .container { margin-bottom: 40px; }
         .skills-cloud {
-            display: flex; flex-wrap: wrap; gap: 12px;
-            justify-content: center; max-width: 900px; margin: 0 auto;
-            overflow: visible;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 24px 32px;
+            margin: 0 24px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .skills-cloud::-webkit-scrollbar { display: none; }
+        .skills-cloud-track {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            max-height: 140px;
+            gap: 12px;
+            width: max-content;
+            padding: 16px 24px;
         }
         .skill-chip {
-            padding: 10px 22px; border-radius: 100px;
-            font-size: 0.8125rem; font-weight: 600;
+            padding: 8px 14px; border-radius: 100px;
+            font-size: 0.7rem; font-weight: 600;
             border: 1px solid var(--border);
             color: var(--text-secondary);
             transition: all 0.3s; cursor: default;
             background: var(--bg-card);
         }
-        .skill-chip:hover {
-            border-color: var(--accent); color: var(--accent-bright);
-            background: var(--accent-glow); transform: translateY(-2px);
-        }
-        .skill-chip.highlight {
-            border-color: var(--accent); color: var(--accent-bright);
-            background: rgba(6,182,212,0.08);
-        }
-        .skill-chip.highlight-2 {
-            border-color: var(--accent-2); color: #a78bfa;
-            background: rgba(139,92,246,0.08);
-        }
-        .skill-chip.highlight-3 {
-            border-color: #10b981; color: #34d399;
-            background: rgba(16,185,129,0.08);
-        }
+        .skill-chip:hover { transform: translateY(-2px); }
+        .skill-chip.chip-c1 { border-color: #06b6d4; color: #22d3ee; background: rgba(6,182,212,0.14); }
+        .skill-chip.chip-c1:hover { background: rgba(6,182,212,0.22); }
+        .skill-chip.chip-c2 { border-color: #8b5cf6; color: #a78bfa; background: rgba(139,92,246,0.14); }
+        .skill-chip.chip-c2:hover { background: rgba(139,92,246,0.22); }
+        .skill-chip.chip-c3 { border-color: #10b981; color: #34d399; background: rgba(16,185,129,0.14); }
+        .skill-chip.chip-c3:hover { background: rgba(16,185,129,0.22); }
+        .skill-chip.chip-c4 { border-color: #f59e0b; color: #fbbf24; background: rgba(245,158,11,0.14); }
+        .skill-chip.chip-c4:hover { background: rgba(245,158,11,0.22); }
+        .skill-chip.chip-c5 { border-color: #ec4899; color: #f472b6; background: rgba(236,72,153,0.14); }
+        .skill-chip.chip-c5:hover { background: rgba(236,72,153,0.22); }
+        .skill-chip.chip-c6 { border-color: #3b82f6; color: #60a5fa; background: rgba(59,130,246,0.14); }
+        .skill-chip.chip-c6:hover { background: rgba(59,130,246,0.22); }
+        .skill-chip.chip-c7 { border-color: #14b8a6; color: #2dd4bf; background: rgba(20,184,166,0.14); }
+        .skill-chip.chip-c7:hover { background: rgba(20,184,166,0.22); }
+        .skill-chip.chip-c8 { border-color: #f43f5e; color: #fb7185; background: rgba(244,63,94,0.14); }
+        .skill-chip.chip-c8:hover { background: rgba(244,63,94,0.22); }
         .skill-chip[data-skill-status] {
             position: relative;
-            cursor: help;
+            cursor: default;
         }
         .skill-chip[data-skill-status]::after {
+            display: none;
             content: attr(data-skill-status);
             position: absolute;
             bottom: 100%; left: 50%;
@@ -1113,20 +1151,34 @@
         }
         @keyframes panelFade { from { opacity: 0; } to { opacity: 1; } }
         .platform-chip {
-            padding: 10px 22px; border-radius: 100px;
-            font-size: 0.8125rem; font-weight: 600;
+            padding: 8px 14px; border-radius: 100px;
+            font-size: 0.7rem; font-weight: 600;
             border: 1px solid var(--border);
             color: var(--text-secondary);
             transition: all 0.3s; cursor: default;
             background: var(--bg-card);
             position: relative;
         }
-        .platform-chip[data-skill-status] { cursor: help; }
-        .platform-chip:hover {
-            border-color: var(--border-hover); transform: translateY(-2px);
-            background: var(--bg-card-hover);
-        }
+        .platform-chip:hover { transform: translateY(-2px); }
+        .platform-chip.chip-c1 { border-color: #06b6d4; color: #22d3ee; background: rgba(6,182,212,0.14); }
+        .platform-chip.chip-c1:hover { background: rgba(6,182,212,0.22); }
+        .platform-chip.chip-c2 { border-color: #8b5cf6; color: #a78bfa; background: rgba(139,92,246,0.14); }
+        .platform-chip.chip-c2:hover { background: rgba(139,92,246,0.22); }
+        .platform-chip.chip-c3 { border-color: #10b981; color: #34d399; background: rgba(16,185,129,0.14); }
+        .platform-chip.chip-c3:hover { background: rgba(16,185,129,0.22); }
+        .platform-chip.chip-c4 { border-color: #f59e0b; color: #fbbf24; background: rgba(245,158,11,0.14); }
+        .platform-chip.chip-c4:hover { background: rgba(245,158,11,0.22); }
+        .platform-chip.chip-c5 { border-color: #ec4899; color: #f472b6; background: rgba(236,72,153,0.14); }
+        .platform-chip.chip-c5:hover { background: rgba(236,72,153,0.22); }
+        .platform-chip.chip-c6 { border-color: #3b82f6; color: #60a5fa; background: rgba(59,130,246,0.14); }
+        .platform-chip.chip-c6:hover { background: rgba(59,130,246,0.22); }
+        .platform-chip.chip-c7 { border-color: #14b8a6; color: #2dd4bf; background: rgba(20,184,166,0.14); }
+        .platform-chip.chip-c7:hover { background: rgba(20,184,166,0.22); }
+        .platform-chip.chip-c8 { border-color: #f43f5e; color: #fb7185; background: rgba(244,63,94,0.14); }
+        .platform-chip.chip-c8:hover { background: rgba(244,63,94,0.22); }
+        .platform-chip[data-skill-status] { cursor: default; }
         .platform-chip[data-skill-status]::after {
+            display: none;
             content: attr(data-skill-status);
             position: absolute; bottom: 100%; left: 50%;
             transform: translateX(-50%) translateY(-10px);
@@ -1546,6 +1598,12 @@
                     <span class="skill-chip" data-skill-status="On demand">HTML5</span>
                     <span class="skill-chip" data-skill-status="On demand">CSS3</span>
                     <span class="skill-chip" data-skill-status="On demand">Redux</span>
+                    <span class="skill-chip highlight" data-skill-status="Daily · Always on">Zustand</span>
+                    <span class="skill-chip highlight" data-skill-status="Daily · Always on">Zod</span>
+                    <span class="skill-chip highlight-2" data-skill-status="Daily · Always on">TanStack Query</span>
+                    <span class="skill-chip highlight-2" data-skill-status="On demand">React Hook Form</span>
+                    <span class="skill-chip" data-skill-status="On demand">shadcn/ui</span>
+                    <span class="skill-chip" data-skill-status="On demand">Vite</span>
                     <span class="skill-chip highlight-2" data-skill-status="On demand">GraphQL</span>
                     <span class="skill-chip" data-skill-status="On demand">RESTful APIs</span>
                     <span class="skill-chip" data-skill-status="Daily · Always on">ES6+</span>
@@ -1554,8 +1612,78 @@
                     <span class="skill-chip" data-skill-status="On demand">Material UI</span>
                     <span class="skill-chip" data-skill-status="On demand">Webpack</span>
                     <span class="skill-chip" data-skill-status="On demand">Babel</span>
+                    <span class="skill-chip highlight-2" data-skill-status="On demand">Prisma</span>
+                    <span class="skill-chip" data-skill-status="On demand">tRPC</span>
+                    <span class="skill-chip highlight" data-skill-status="Daily · Always on">Expo</span>
+                    <span class="skill-chip highlight" data-skill-status="Daily · Always on">React Navigation</span>
+                    <span class="skill-chip highlight-2" data-skill-status="Daily · Always on">React Native Reanimated</span>
+                    <span class="skill-chip highlight-2" data-skill-status="On demand">React Native Gesture Handler</span>
+                    <span class="skill-chip" data-skill-status="On demand">Metro</span>
+                    <span class="skill-chip" data-skill-status="On demand">EAS Build</span>
+                    <span class="skill-chip" data-skill-status="On demand">Expo Router</span>
+                    <span class="skill-chip" data-skill-status="On demand">React Native Paper</span>
+                    <span class="skill-chip" data-skill-status="On demand">NativeWind</span>
+                    <span class="skill-chip" data-skill-status="On demand">Tamagui</span>
+                    <span class="skill-chip" data-skill-status="On demand">AsyncStorage</span>
+                    <span class="skill-chip" data-skill-status="On demand">MMKV</span>
+                    <span class="skill-chip" data-skill-status="On demand">Remix</span>
+                    <span class="skill-chip" data-skill-status="On demand">SWR</span>
+                    <span class="skill-chip" data-skill-status="On demand">Jotai</span>
+                    <span class="skill-chip" data-skill-status="On demand">Radix UI</span>
+                    <span class="skill-chip" data-skill-status="On demand">Framer Motion</span>
+                    <span class="skill-chip" data-skill-status="On demand">React Server Components</span>
+                    <span class="skill-chip" data-skill-status="On demand">Server Actions</span>
+                    <span class="skill-chip" data-skill-status="On demand">Turbo</span>
+                    <span class="skill-chip" data-skill-status="On demand">pnpm</span>
+                    <span class="skill-chip" data-skill-status="On demand">ESLint</span>
+                    <span class="skill-chip" data-skill-status="On demand">Prettier</span>
+                    <span class="skill-chip" data-skill-status="On demand">Husky</span>
+                    <span class="skill-chip" data-skill-status="On demand">CSS Modules</span>
+                    <span class="skill-chip" data-skill-status="On demand">Styled Components</span>
+                    <span class="skill-chip" data-skill-status="On demand">Emotion</span>
+                    <span class="skill-chip" data-skill-status="On demand">PostCSS</span>
+                    <span class="skill-chip highlight-2" data-skill-status="On demand">PostgreSQL</span>
+                    <span class="skill-chip" data-skill-status="On demand">MongoDB</span>
+                    <span class="skill-chip" data-skill-status="On demand">Redis</span>
+                    <span class="skill-chip" data-skill-status="On demand">Drizzle ORM</span>
+                    <span class="skill-chip" data-skill-status="On demand">Fastify</span>
+                    <span class="skill-chip" data-skill-status="On demand">WebSockets</span>
+                    <span class="skill-chip" data-skill-status="On demand">JWT</span>
+                    <span class="skill-chip" data-skill-status="On demand">Next.js App Router</span>
+                    <span class="skill-chip" data-skill-status="On demand">React Context</span>
+                    <span class="skill-chip" data-skill-status="On demand">Error Boundaries</span>
+                    <span class="skill-chip" data-skill-status="On demand">Suspense</span>
+                    <span class="skill-chip" data-skill-status="On demand">React 19</span>
+                    <span class="skill-chip" data-skill-status="On demand">Nx</span>
+                    <span class="skill-chip" data-skill-status="On demand">Monorepos</span>
+                    <span class="skill-chip" data-skill-status="On demand">TanStack Router</span>
+                    <span class="skill-chip" data-skill-status="On demand">TanStack Table</span>
+                    <span class="skill-chip" data-skill-status="On demand">React Compiler</span>
+                    <span class="skill-chip" data-skill-status="On demand">Supabase</span>
+                    <span class="skill-chip" data-skill-status="On demand">PlanetScale</span>
+                    <span class="skill-chip" data-skill-status="On demand">Vercel KV</span>
+                    <span class="skill-chip" data-skill-status="On demand">Serverless</span>
+                    <span class="skill-chip" data-skill-status="On demand">Edge Runtime</span>
+                    <span class="skill-chip" data-skill-status="On demand">npm</span>
+                    <span class="skill-chip" data-skill-status="On demand">Yarn</span>
                     <span class="skill-chip" data-skill-status="On demand">PHP</span>
                     <span class="skill-chip" data-skill-status="On demand">Laravel</span>
+                    <span class="skill-chip" data-skill-status="On demand">Accessibility</span>
+                    <span class="skill-chip" data-skill-status="On demand">Responsive Design</span>
+                    <span class="skill-chip" data-skill-status="On demand">UX</span>
+                    <span class="skill-chip" data-skill-status="On demand">SEO</span>
+                    <span class="skill-chip" data-skill-status="On demand">Browser DevTools</span>
+                    <span class="skill-chip" data-skill-status="On demand">Web Performance</span>
+                    <span class="skill-chip" data-skill-status="On demand">Core Web Vitals</span>
+                    <span class="skill-chip" data-skill-status="On demand">Vue</span>
+                    <span class="skill-chip" data-skill-status="On demand">Nuxt</span>
+                    <span class="skill-chip" data-skill-status="On demand">Angular</span>
+                    <span class="skill-chip" data-skill-status="On demand">Svelte</span>
+                    <span class="skill-chip" data-skill-status="On demand">SSR</span>
+                    <span class="skill-chip" data-skill-status="On demand">SSG</span>
+                    <span class="skill-chip" data-skill-status="On demand">PWA</span>
+                    <span class="skill-chip" data-skill-status="On demand">Code Splitting</span>
+                    <span class="skill-chip" data-skill-status="On demand">Lazy Loading</span>
                 </div>
             </div>
 
@@ -1571,6 +1699,34 @@
                     <span class="skill-chip highlight-3" data-skill-status="Daily · Always on">API Design</span>
                     <span class="skill-chip highlight-3" data-skill-status="On demand">Scalability</span>
                     <span class="skill-chip highlight-3" data-skill-status="On demand">Event-Driven</span>
+                    <span class="skill-chip highlight-3" data-skill-status="Growing focus">LangChain</span>
+                    <span class="skill-chip highlight-3" data-skill-status="Growing focus">LlamaIndex</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">OpenAI API</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Anthropic Claude</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Google Gemini</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Mistral AI</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Hugging Face</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">AWS SageMaker</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Azure AI</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Pinecone</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Weaviate</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Qdrant</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Chroma</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">pgvector</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Embeddings</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Semantic Search</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Prompt Engineering</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">AI Agents</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Token Management</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Cost Optimization</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Multimodal AI</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">NLP</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">LLMs</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Vector DB</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Document Search</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Chatbots</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Cohere</span>
+                    <span class="skill-chip highlight-3" data-skill-status="On demand">Sentence Transformers</span>
                 </div>
             </div>
 
@@ -1611,6 +1767,16 @@
                     <span class="skill-chip" data-skill-status="On demand">Monitoring</span>
                     <span class="skill-chip" data-skill-status="On demand">Release Management</span>
                     <span class="skill-chip" data-skill-status="On demand">Git</span>
+                    <span class="skill-chip" data-skill-status="On demand">Kubernetes</span>
+                    <span class="skill-chip" data-skill-status="On demand">Terraform</span>
+                    <span class="skill-chip" data-skill-status="On demand">Infrastructure as Code</span>
+                    <span class="skill-chip" data-skill-status="On demand">Load Balancing</span>
+                    <span class="skill-chip" data-skill-status="On demand">Fault Tolerance</span>
+                    <span class="skill-chip" data-skill-status="On demand">Disaster Recovery</span>
+                    <span class="skill-chip" data-skill-status="On demand">Observability</span>
+                    <span class="skill-chip" data-skill-status="On demand">Kafka</span>
+                    <span class="skill-chip" data-skill-status="On demand">RabbitMQ</span>
+                    <span class="skill-chip" data-skill-status="On demand">Message Queues</span>
                 </div>
             </div>
 
@@ -1627,6 +1793,19 @@
                     <span class="skill-chip" data-skill-status="On demand">Technical Discovery</span>
                     <span class="skill-chip" data-skill-status="On demand">Requirements</span>
                     <span class="skill-chip" data-skill-status="On demand">Mentoring</span>
+                    <span class="skill-chip" data-skill-status="On demand">Architecture Patterns</span>
+                    <span class="skill-chip" data-skill-status="On demand">Code Reviews</span>
+                    <span class="skill-chip" data-skill-status="On demand">Technical Documentation</span>
+                    <span class="skill-chip" data-skill-status="On demand">Requirements Analysis</span>
+                    <span class="skill-chip" data-skill-status="On demand">Technical Specifications</span>
+                    <span class="skill-chip" data-skill-status="On demand">Project Delivery</span>
+                    <span class="skill-chip" data-skill-status="On demand">DDD</span>
+                    <span class="skill-chip" data-skill-status="On demand">Clean Architecture</span>
+                    <span class="skill-chip" data-skill-status="On demand">Hexagonal Architecture</span>
+                    <span class="skill-chip" data-skill-status="On demand">CQRS</span>
+                    <span class="skill-chip" data-skill-status="On demand">Technical Decision Making</span>
+                    <span class="skill-chip" data-skill-status="On demand">Capacity Planning</span>
+                    <span class="skill-chip" data-skill-status="On demand">Risk Assessment</span>
                 </div>
             </div>
         </div>
@@ -1750,125 +1929,138 @@
 
             <div id="panel-code" class="solutions-panel active">
                 <h3 class="services-i-can fade-up">I can — <span class="dash">assist with your code projects</span></h3>
-                <div class="services-techs fade-up">
-                    <span class="services-tech-tag">React</span>
-                    <span class="services-tech-tag">Next.js</span>
-                    <span class="services-tech-tag">React Native</span>
-                    <span class="services-tech-tag">TypeScript</span>
-                    <span class="services-tech-tag">Node.js</span>
-                    <span class="services-tech-tag">Firebase</span>
-                    <span class="services-tech-tag">Tailwind CSS</span>
-                    <span class="services-tech-tag">GraphQL</span>
-                    <span class="services-tech-tag">REST APIs</span>
-                    <span class="services-tech-tag">WordPress</span>
-                    <span class="services-tech-tag">Laravel</span>
-                    <span class="services-tech-tag">PHP</span>
-                </div>
                 <div class="solutions-grid">
                     <div class="solution-card fade-up">
                         <div class="solution-icon">&#128640;</div>
                         <h3>Product Development</h3>
                         <p>End-to-end product delivery from MVP to scale. Mobile apps, web platforms, APIs, and cloud infrastructure done right.</p>
-                        <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Product%20Development" class="solution-cta">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Discuss this service
-                        </a>
+                        <div class="solution-cta-group">
+                            <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Product%20Development" class="solution-cta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/" target="_blank" rel="noopener" class="solution-cta solution-cta-linkedin">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                     <div class="solution-card fade-up">
                         <div class="solution-icon">&#128260;</div>
                         <h3>System Integration</h3>
                         <p>Connecting your tech stack into a unified ecosystem. CRM, ERP, IoT platforms, payment systems, and third-party APIs.</p>
-                        <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20System%20Integration" class="solution-cta">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Discuss this service
-                        </a>
+                        <div class="solution-cta-group">
+                            <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20System%20Integration" class="solution-cta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/" target="_blank" rel="noopener" class="solution-cta solution-cta-linkedin">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div id="panel-architect" class="solutions-panel">
                 <h3 class="services-i-can fade-up">I can — <span class="dash">architect your systems</span></h3>
-                <div class="services-techs fade-up">
-                    <span class="services-tech-tag">Microservices</span>
-                    <span class="services-tech-tag">API Design</span>
-                    <span class="services-tech-tag">AWS</span>
-                    <span class="services-tech-tag">Google Cloud</span>
-                    <span class="services-tech-tag">Firebase</span>
-                    <span class="services-tech-tag">Docker</span>
-                    <span class="services-tech-tag">CI/CD</span>
-                    <span class="services-tech-tag">Event-Driven</span>
-                    <span class="services-tech-tag">Scalability</span>
-                </div>
                 <div class="solutions-grid">
                     <div class="solution-card fade-up">
                         <div class="solution-icon">&#128736;</div>
                         <h3>Architecture Design & Review</h3>
                         <p>Comprehensive system architecture from scratch or audit of existing systems. Scalability, security, and performance optimization baked in.</p>
-                        <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Architecture%20Design%20%26%20Review" class="solution-cta">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Discuss this service
-                        </a>
+                        <div class="solution-cta-group">
+                            <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Architecture%20Design%20%26%20Review" class="solution-cta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/" target="_blank" rel="noopener" class="solution-cta solution-cta-linkedin">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                     <div class="solution-card fade-up">
                         <div class="solution-icon">&#9729;</div>
                         <h3>Cloud & DevOps Strategy</h3>
                         <p>Cloud migration, infrastructure-as-code, CI/CD pipelines, monitoring, and cost optimization for your infrastructure.</p>
-                        <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Cloud%20%26%20DevOps%20Strategy" class="solution-cta">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Discuss this service
-                        </a>
+                        <div class="solution-cta-group">
+                            <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Cloud%20%26%20DevOps%20Strategy" class="solution-cta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/" target="_blank" rel="noopener" class="solution-cta solution-cta-linkedin">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div id="panel-delivery" class="solutions-panel">
                 <h3 class="services-i-can fade-up">I can — <span class="dash">lead and deliver like a CTO</span></h3>
-                <div class="services-techs fade-up">
-                    <span class="services-tech-tag">Technical Management</span>
-                    <span class="services-tech-tag">Technical Consultation</span>
-                    <span class="services-tech-tag">Technical Advice</span>
-                    <span class="services-tech-tag">Technical Strategy</span>
-                    <span class="services-tech-tag">Vendor Evaluation</span>
-                    <span class="services-tech-tag">Risk Assessment</span>
-                    <span class="services-tech-tag">Stakeholder Alignment</span>
-                    <span class="services-tech-tag">Technology Assessment</span>
-                </div>
                 <div class="solutions-grid">
                     <div class="solution-card fade-up">
                         <div class="solution-icon">&#128101;</div>
                         <h3>Engineering Team Building</h3>
                         <p>Hiring strategy, team structure, engineering processes, code review culture, and mentorship programs that retain top talent.</p>
-                        <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Engineering%20Team%20Building" class="solution-cta">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Discuss this service
-                        </a>
+                        <div class="solution-cta-group">
+                            <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Engineering%20Team%20Building" class="solution-cta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/" target="_blank" rel="noopener" class="solution-cta solution-cta-linkedin">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                     <div class="solution-card fade-up">
                         <div class="solution-icon">&#128736;</div>
                         <h3>Technical Management</h3>
                         <p>Day-to-day technical oversight: resource allocation, sprint planning, delivery tracking, and ensuring engineering velocity aligns with business goals.</p>
-                        <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Technical%20Management" class="solution-cta">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Discuss this service
-                        </a>
+                        <div class="solution-cta-group">
+                            <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Technical%20Management" class="solution-cta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/" target="_blank" rel="noopener" class="solution-cta solution-cta-linkedin">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                     <div class="solution-card fade-up">
                         <div class="solution-icon">&#128172;</div>
                         <h3>Technical Consultation &amp; Advice</h3>
                         <p>On-demand technical guidance for key decisions: tech stack choice, build vs buy, scaling strategies, and navigating technical debt or vendor lock-in.</p>
-                        <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Technical%20Consultation%20%26%20Advice" class="solution-cta">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Discuss this service
-                        </a>
+                        <div class="solution-cta-group">
+                            <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Technical%20Consultation%20%26%20Advice" class="solution-cta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/" target="_blank" rel="noopener" class="solution-cta solution-cta-linkedin">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                     <div class="solution-card fade-up">
                         <div class="solution-icon">&#128202;</div>
                         <h3>Technical Due Diligence</h3>
                         <p>Pre-investment technical assessment for VCs and acquirers. Code quality, architecture debt, team capability, and scalability analysis.</p>
-                        <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Technical%20Due%20Diligence" class="solution-cta">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                            Discuss this service
-                        </a>
+                        <div class="solution-cta-group">
+                            <a href="mailto:anand.enigmahit@gmail.com?subject=Consultation%20Enquiry%3A%20Technical%20Due%20Diligence" class="solution-cta">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/" target="_blank" rel="noopener" class="solution-cta solution-cta-linkedin">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2635,8 +2827,12 @@
                     </div>
                     <div class="contact-cta">
                         <a href="mailto:anand.enigmahit@gmail.com" class="contact-email-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
-                            Send Me a Message
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            Email Me
+                        </a>
+                        <a href="https://www.linkedin.com/in/anand-bhandari-b98900164/" target="_blank" rel="noopener" class="contact-linkedin-btn">
+                            <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            Message on LinkedIn
                         </a>
                     </div>
                 </div>
@@ -2709,6 +2905,34 @@
                 document.getElementById(targetId).classList.add('active');
             });
         });
+
+        // Skills cloud: wrap in track, assign random colors (no duplication)
+        const chipColors = ['chip-c1','chip-c2','chip-c3','chip-c4','chip-c5','chip-c6','chip-c7','chip-c8'];
+        document.querySelectorAll('.skills-cloud').forEach(cloud => {
+            const track = document.createElement('div');
+            track.className = 'skills-cloud-track';
+            const chips = Array.from(cloud.children);
+            chips.forEach(c => {
+                c.classList.remove('highlight','highlight-2','highlight-3');
+                c.classList.add(chipColors[Math.floor(Math.random() * chipColors.length)]);
+                track.appendChild(c);
+            });
+            cloud.appendChild(track);
+        });
+
+        // Auto-scroll: right-to-left, then left-to-right (ping-pong loop)
+        const scrollDirs = new Map();
+        function autoScrollSkills() {
+            document.querySelectorAll('.skills-panel.active .skills-cloud').forEach(cloud => {
+                if (cloud.scrollWidth <= cloud.clientWidth) return;
+                const maxScroll = cloud.scrollWidth - cloud.clientWidth;
+                let dir = scrollDirs.get(cloud) ?? 1;
+                cloud.scrollLeft += dir;
+                if (cloud.scrollLeft >= maxScroll) { cloud.scrollLeft = maxScroll; scrollDirs.set(cloud, -1); }
+                else if (cloud.scrollLeft <= 0) { cloud.scrollLeft = 0; scrollDirs.set(cloud, 1); }
+            });
+        }
+        setInterval(autoScrollSkills, 35);
 
         // Projects tabs
         document.querySelectorAll('.projects-tab').forEach(tab => {
